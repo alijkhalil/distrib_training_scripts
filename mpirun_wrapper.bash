@@ -6,7 +6,7 @@ cd `dirname $0`
 if [ $# -le 6 ]; then
     echo "ERROR: This script requires at least 7 arguments." >&2
     echo "Usage: ./$0 <path_to_SSH_key> <num_GPUs_per_node> <2_or_more_username_host_combos> <path_to_training_script>" >&2
-    echo "Example: ./$0 ./ssh_key.pem 2 john 192.168.1.89 jane 192.168.1.90 joe 192.168.1.91 ./trainer.py" >&2
+    echo "Example: ./$0 ./ssh_key.pem 2 john 192.168.1.89 jane 192.168.1.90 joe 192.168.1.91 ./sample_fbf_classifier.py" >&2
     
     exit 1
 fi
@@ -64,6 +64,7 @@ fi
 # Perform mpirun command
 NUM_HOSTS=`echo "($# - 2) / 2" | bc`
 NUM_PROC=`echo "$NUM_HOSTS * $NUM_GPUS_P_NODE" | bc`
+TRAIN_FILE=`readlink -f $TRAIN_FILE`
 
 nohup mpirun -np $NUM_PROC -hostfile $HOSTFILE_NAME --mca btl_tcp_if_include eth0 \
             -mca plm_rsh_no_tree_spawn 1 -bind-to socket -map-by slot \
