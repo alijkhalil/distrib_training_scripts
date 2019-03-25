@@ -3,8 +3,8 @@
 # Ensure that there are at least the minimum required number of agruments
 cd `dirname $0`
 
-if [ $# -le 7 ]; then
-    echo "ERROR: This script requires at least 6 arguments." >&2
+if [ $# -le 6 ]; then
+    echo "ERROR: This script requires at least 7 arguments." >&2
     echo "Usage: ./$0 <path_to_SSH_key> <num_GPUs_per_node> <2_or_more_username_host_combos> <path_to_training_script>" >&2
     echo "Example: ./$0 ./ssh_key.pem 2 john 192.168.1.89 jane 192.168.1.90 joe 192.168.1.91 ./trainer.py" >&2
     
@@ -51,7 +51,7 @@ fi
 
 
 # Make SSH keyless
-SSH_KEY_PATH=$1
+SSH_KEY_PATH=`readlink -f $1`
 HOSTFILE_NAME="hostfile" 
 
 bash utils/set_up_keyless_ssh.bash $SSH_KEY_PATH $USER_IP_COMBOS
@@ -75,6 +75,4 @@ nohup mpirun -np $NUM_PROC -hostfile $HOSTFILE_NAME --mca btl_tcp_if_include eth
             
 # Remove hostfile and exit successfully
 echo "MPIRUN now executing training script on $NUM_PROC GPUs accross $NUM_HOSTS hosts!"
-
-rm -f $HOSTFILE_NAME
 exit 0            

@@ -16,7 +16,9 @@ fi
 
 
 # Run keygen command to get new SSH key if not yet there
-cd `dirname $0`
+SSH_KEY_PATH=`readlink -f $1`
+
+cd
 HOME_DIR=`pwd`
 
 if [ ! -d $HOME_DIR/.ssh ]; then
@@ -29,7 +31,6 @@ fi
 
 
 # Add public key to remote hosts if keyless SSH not already working
-SSH_KEY_PATH=$1
 TMP_USERNAME=""
 TIMEOUT_SECS=3
 

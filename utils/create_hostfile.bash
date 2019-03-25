@@ -29,7 +29,7 @@ for ip in "${@:2}"; do
 done
 
 
-# Output hostfile
+# Outputs a hostfile in "<repo_root_dir>/hostfile"
 cd `dirname $0`
 rm -f $HOSTFILE_NAME
 touch $HOSTFILE_NAME
