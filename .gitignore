@@ -1,2 +1,5 @@
 nohup.out
 hostfile
+
+output_weights/*
+!output_weights/.gitkeep

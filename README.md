@@ -8,18 +8,22 @@ Overview:
     it can also be slightly modified for use in a lot of different 
     settings.
 
-    The main script - 'mpi_wrapper.bash' - is the only one 
+    The main script - 'mpirun_wrapper.bash' - is the only one 
     needed to execute a distrubed deep learning module (assuming 
     the module includes code from Horovod or another framework 
-    for leveraging distributed training ops).
+    for leveraging distributed training ops).  Along side that 
+    though, there are sample Keras scripts (in the 'sample_train_scripts' 
+    directory) for training image and video recognition models in 
+    a distributed fashion.
+    
 
 
 Notes:
 
-    -Before attempting to run the 'mpi_wrapper.bash' script, users should 
-        check the parameters and sequencing by calling 'mpi_wrapper.bash' 
+    -Before attempting to run the 'mpirun_wrapper.bash' script, users should 
+        check the parameters and sequencing by calling 'mpirun_wrapper.bash' 
         without any parameters
-    -For the parameters passed to 'mpi_wrapper.bash' specifying the username's 
+    -For the parameters passed to 'mpirun_wrapper.bash' specifying the username's 
         and host IP's included in the cluster, users should never forget to 
         include the local system IP if it is part of the cluster.
     -The training script should be in the same filesystem location on every 
