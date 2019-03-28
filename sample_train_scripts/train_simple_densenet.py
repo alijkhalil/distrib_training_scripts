@@ -84,7 +84,7 @@ if __name__ == '__main__':
     ]
         
     if hvd.rank() == 0:
-        callbacks.append(ModelCheckpoint("./output_weights/simple_densenet.h5", monitor="acc", 
+        callbacks.append(ModelCheckpoint("../output_weights/simple_densenet.h5", monitor="acc", 
                                 period=int((num_epochs + (10 * hvd.size() - 1)) // (10 * hvd.size())),
                                 save_best_only=False, save_weights_only=True))
                             
