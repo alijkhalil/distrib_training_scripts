@@ -11,10 +11,15 @@ Overview:
     The main script - 'mpirun_wrapper.bash' - is the only one 
     needed to execute a distrubed deep learning module (assuming 
     the module includes code from Horovod or another framework 
-    for leveraging distributed training ops).  Along side that 
-    though, there are sample Keras scripts (in the 'sample_train_scripts' 
-    directory) for training image and video recognition models in 
-    a distributed fashion.
+    for leveraging distributed training ops).  
+    
+    Along side that though, there are sample Keras scripts (in 
+    the 'sample_train_scripts' directory) for training image 
+    and video recognition models in a distributed fashion.  These
+    scripts may require other repositories (capable of being 
+    acquired using the 'set_up.sh' script) and the NBA play-by-play 
+    dataset (also capable of being downloaded with the 
+    'nba_pbp_video_dataset' repo).
     
 
 
@@ -28,3 +33,7 @@ Notes:
         include the local system IP if it is part of the cluster.
     -The training script should be in the same filesystem location on every 
         node involved in the cluster
+    -The 'sample_train_scripts/train_event_level.py' and 'sample_train_scripts/
+        train_fbf_densenet.py' script require a very high-end GPU to run them in 
+        their current state.  Model parameters in the scripts can be adjusted 
+        though to reduce both their system and GPU memory footprints.
