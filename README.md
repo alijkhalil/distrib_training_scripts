@@ -18,22 +18,26 @@ Overview:
     and video recognition models in a distributed fashion.  These
     scripts may require other repositories (capable of being 
     acquired using the 'set_up.sh' script) and the NBA play-by-play 
-    dataset (also capable of being downloaded with the 
+    dataset (also capable of being downloaded using the 
     'nba_pbp_video_dataset' repo).
     
 
 
 Notes:
 
-    -Before attempting to run the 'mpirun_wrapper.bash' script, users should 
-        check the parameters and sequencing by calling 'mpirun_wrapper.bash' 
-        without any parameters
-    -For the parameters passed to 'mpirun_wrapper.bash' specifying the username's 
-        and host IP's included in the cluster, users should never forget to 
+    -Before attempting to run the 'mpirun_wrapper.bash' script in earnest, you 
+        should check the required parameters and sequencing by calling 
+        'mpirun_wrapper.bash' without any parameters.
+    -For the parameters passed to 'mpirun_wrapper.bash' specifying the usernames 
+        and host IP's to be included in the cluster, you should never forget to 
         include the local system IP if it is part of the cluster.
     -The training script should be in the same filesystem location on every 
-        node involved in the cluster
+        node involved in the cluster.
     -The 'sample_train_scripts/train_event_level.py' and 'sample_train_scripts/
-        train_fbf_densenet.py' script require a very high-end GPU to run them in 
-        their current state.  Model parameters in the scripts can be adjusted 
-        though to reduce both their system and GPU memory footprints.
+        train_fbf_densenet.py' script require a high-end GPU to run them in 
+        their current state (such as the Tesla V100 GPUs found on Amazon P3 
+        instances).
+    -These training scripts are primarily intended for edification purposes and 
+        may require a dedicated GPU, increased model capacity, and/or hundreds 
+        of hours of training time on a cluster to train the models close to 
+        completion.
