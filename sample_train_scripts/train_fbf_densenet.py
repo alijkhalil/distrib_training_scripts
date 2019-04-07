@@ -25,7 +25,7 @@ from dl_utilities.nba_pbp import nba_pbp_utils as pbp_utils  # Requires 'sys.pat
     
     
     
-#############  TRAINING/TESTING ROUTINE FOR PRE-TRAINED MODELS ############
+#############  TRAINING ROUTINE FOR FRAME-LEVEL CLASSIFICATION ############
 if __name__ == '__main__':
 	
 	# Initialize Horovod.
@@ -42,7 +42,7 @@ if __name__ == '__main__':
 	
     
     # Get training/test data and normalize/standardize it
-    pbp_dataset_location = '/mnt/efs/pbp_dataset/game_events'   # REPLACE WITH YOUR SPECIFIC NBA PBP DATASET PATH
+    pbp_dataset_location = '/home/ubuntu/nba_pbp_labels_videos'   # REPLACE WITH YOUR SPECIFIC NBA PBP DATASET PATH
     
     batch_size = 6      # Intentionally small to fit most systems
     num_epochs = int(math.ceil(40.0 / hvd.size()))

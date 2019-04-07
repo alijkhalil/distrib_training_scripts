@@ -28,7 +28,7 @@ from dl_utilities.nba_pbp import nba_pbp_utils as pbp_utils  # Requires 'sys.pat
     
     
     
-#############  TRAINING/TESTING ROUTINE FOR PRE-TRAINED MODELS ############
+#############  TRAINING ROUTINE FOR DENSENET ON CIFAR100 ############
 if __name__ == '__main__':
 	
 	# Initialize Horovod.
